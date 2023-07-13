@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
-
+  before_action :set_clients, only: %i[ new edit create update] #ejecutamos el metodo
+  before_action :set_tipo_pagos, only: %i[ new edit create update] #ejecutamos el metodo
+  before_action :set_productos, only: %i[ new edit create update] #ejecutamos el metodo
   # GET /orders or /orders.json
   def index
     @orders = Order.all
@@ -61,6 +63,18 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def set_clients
+      @clientes = Client.all
+    end
+
+    def set_tipo_pagos
+      @tipoPagos = TipoDePago.all
+    end
+
+    def set_productos
+      @productos = Product.all
     end
 
     # Only allow a list of trusted parameters through.

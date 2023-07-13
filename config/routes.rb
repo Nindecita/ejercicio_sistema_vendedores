@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tipo_de_pagos
   resources :orders
   resources :clients
   resources :products

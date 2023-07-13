@@ -8,10 +8,13 @@ default: &default
 development:
   <<: *default
   database: usuario_dev
-  
+  username: leon
+  password: leon
 test:
   <<: *default
   database: usuario_test
+  username: leon
+  password: leon
 
 production:
   <<: *default

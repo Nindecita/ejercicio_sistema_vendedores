@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_230712) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_13_012208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_230712) do
     t.integer "monto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id", null: false
+    t.bigint "tipo_de_pago_id", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["tipo_de_pago_id"], name: "index_orders_on_tipo_de_pago_id"
   end
 
   create_table "orders_products", force: :cascade do |t|
@@ -45,6 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_230712) do
     t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cantidad"
+    t.integer "subtotal"
     t.index ["order_id"], name: "index_orders_products_on_order_id"
     t.index ["product_id"], name: "index_orders_products_on_product_id"
   end
@@ -53,6 +59,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_230712) do
     t.string "name"
     t.integer "price"
     t.integer "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tipo_de_pagos", force: :cascade do |t|
+    t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,6 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_230712) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "tipo_de_pagos"
   add_foreign_key "orders_products", "orders"
   add_foreign_key "orders_products", "products"
 end

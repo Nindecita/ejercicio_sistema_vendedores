@@ -2,7 +2,6 @@
   <% if order.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
         <% order.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,12 +9,43 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :monto, style: "display: block" %>
     <%= form.number_field :monto %>
   </div>
-
+  <div>
+    <%= form.label :clientes, style: "display: block" %>
+    <%= form.select :clientes, options_from_collection_for_select(@clientes, :id, :name) %>
+  </div>
+  <div>
+    <%= form.label :tipoPago, style: "display: block" %>
+    <%= form.select :tipoPago, options_from_collection_for_select(@tipoPagos, :id, :nombre) %>
+  </div>
+  <hr>
+  <h1>Productos</h1>
+  <div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="">
+            <td><%= form.select :producto, options_from_collection_for_select(@productos, :id, :name) %>
+</td>
+            <td>R1C2</td>
+            <td>R1C3</td>
+            <td>R1C3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div>
     <%= form.submit %>
   </div>
