@@ -5,4 +5,8 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
 
   enum :role, [:normal, :ejecutivo, :admin]
+
+  has_many :pets
+  has_many :matches
+  has_many_attached :images
 end

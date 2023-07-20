@@ -7,14 +7,11 @@ default: &default
 
 development:
   <<: *default
-  database: usuario_dev
-  username: leon
-  password: leon
+  database: development
+
 test:
   <<: *default
-  database: usuario_test
-  username: leon
-  password: leon
+  database: default
 
 production:
   <<: *default

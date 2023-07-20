@@ -85,3 +85,7 @@ gem "popper_js", "~> 2.11"
 gem "jquery-rails", "~> 4.6"
 
 gem "figaro", "~> 1.2"
+
+gem "aws-sdk-s3", "~> 1.130"
+
+gem "activestorage"

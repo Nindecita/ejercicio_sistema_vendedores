@@ -1,0 +1,31 @@
+<div id="<%= dom_id pet %>">
+  <%pet.images.each do |imagen|%>
+    <p>
+      <%= image_tag imagen, class: 'card-img-top' %>
+    </p>
+  <%end%>
+  <p>
+    <strong>Name:</strong>
+    <%= pet.name %>
+  </p>
+  <p>
+    <strong>Race:</strong>
+    <%= pet.race %>
+  </p>
+  <p>
+    <strong>Age:</strong>
+    <%= pet.age %>
+  </p>
+  <p>
+    <strong>Gender:</strong>
+    <%= pet.gender %>
+  </p>
+  <p>
+    <strong>Item:</strong>
+    <%= pet.item %>
+  </p>
+  <p>
+    <strong>User:</strong>
+    <%= pet.user_id %>
+  </p>
+</div>
